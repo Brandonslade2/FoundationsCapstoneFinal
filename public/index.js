@@ -183,19 +183,19 @@ calculateTotalsForm.addEventListener('submit', calculateTotals)
 //Event listeners with GET requests
 updateLogBtn.addEventListener("click", async () => {
     await axios
-        .get('http://localhost:5050/grandtotalhours')
+        .get('/grandtotalhours')
         .then(res => updateGrandTotalHours(res.data))
 })
 
 updateLogBtn.addEventListener("click", async () => {
     await axios
-        .get(`http://localhost:5050/log`)
+        .get(`/log`)
         .then(res => updateLog(res.data))
 })
 
 updateLogBtn.addEventListener("click", async () => {
     await axios
-        .get('http://localhost:5050/grandtotalearnings')
+        .get('/grandtotalearnings')
         .then(res => updateGrandTotalEarnings(res.data))
 })
 
@@ -212,15 +212,15 @@ logTotals.addEventListener('click', async () => {
     else {
         let body = { log: `Logged ${totalHoursWorked} hours for a total of $${totalEarnings}.` }
         await axios
-            .post(`http://localhost:5050/log`, body)
+            .post(`/log`, body)
             .then(res => storeTotalsInLogAlert())
     }
     body = { log: totalHoursWorked }
     await axios
-        .post('http://localhost:5050/addgrandtotalhours', body)
+        .post('/addgrandtotalhours', body)
     body = { log: totalEarnings }
     await axios
-        .post('http://localhost:5050/addgrandtotalearnings', body)
+        .post('/addgrandtotalearnings', body)
     totalHoursWorked = 0
     totalEarnings = 0
     totalHoursWorkedLabel.innerHTML = ('')
