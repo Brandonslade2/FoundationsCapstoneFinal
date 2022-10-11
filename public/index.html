@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage & Clocked Time Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js""></script>
+</head>
+<body>
+    <header>
+        <h1>Wage & Clocked Time Calculator</h1>
+    </header>
+    <div class="column">
+        <form class="form">
+            <h2>Hours Worked</h2>
+            <h3>Format: HH.HH</h3>
+
+            <label class="hours-input-label" for="hours-input">Monday</label>
+            <input type='text' class="hours-input" id="monday-hours-input" />
+
+            <label class="hours-input-label" for="hours-input">Tuesday</label>
+            <input type='text' class="hours-input" id="tuesday-hours-input" />
+
+            <label class="hours-input-label" for="hours-input">Wednesday</label>
+            <input type='text' class="hours-input" id="wednesday-hours-input" />
+
+            <label class="hours-input-label" for="hours-input">Thursday</label>
+            <input type='text' class="hours-input" id="thursday-hours-input" />
+            
+            <label class="hours-input-label" for="hours-input">Friday</label>
+            <input type='text' class="hours-input" id="friday-hours-input" />
+            
+            <label class="hours-input-label" for="hours-input">Saturday</label>
+            <input type='text' class="hours-input" id="saturday-hours-input" />
+            
+            <label class="hours-input-label" for="hours-input">Sunday</label>
+            <input type='text' class="hours-input" id="sunday-hours-input" />
+            
+
+            <label class="hours-input-label" for="hours-input"></label>
+            <h2>Hourly Wage</h2>
+            <h3>Format: $$.¢¢</h3>
+            <input type='text' class="hours-input" id="wage-hours-input" />
+            <p>&nbsp</p>
+
+            <button class="primarybutton" id="calculate-totals">Calculate Totals</button>
+
+            <h2 id="total-hours-worked"></h2>
+            <p>&nbsp</p>
+
+            <h2 id="total-earnings"></h2>
+
+        </form>
+        <button class="primarybutton" id="log-totals">Store totals in log</button>   
+    </div>
+    
+
+    <div class="column">
+        <button class="primarybutton" id="update-log">Update Log and Grand Totals</button>
+        <h2>Grand Total Hours:</h2>
+        <h2 id="grand-total-hours"></h2>
+        <p>&nbsp</p>
+        <h2>Grand Total Earnings:</h2>
+        <h2 id="grand-total-earnings"></h2>
+        <h2 id="log"><u>Log:</u></h2>
+        <section class='log-area'>
+        </section>
+        <h3 id="logged-week"></h3>
+    </div>    
+
+    
+    <script src="index.js"></script>
+</body>
+</html>
