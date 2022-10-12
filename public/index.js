@@ -1,5 +1,3 @@
-const { default: axios } = require("axios")
-
 //Selectors
 const mondayHours = document.querySelector('#monday-hours-input')
 const tuesdayHours = document.querySelector('#tuesday-hours-input')
