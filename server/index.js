@@ -54,4 +54,25 @@ app.post("/addgrandtotalearnings", (req, res) => {
     res.sendStatus(200)
 })
 
+app.post("/cleargrandtotalhours", (req, res) => {
+    grandTotalHours = []
+    let { body } = req
+    grandTotalHours.push(body.log)
+    res.sendStatus(200)
+})
+
+app.post("/cleargrandtotalearnings", (req, res) => {
+    grandTotalEarnings = []
+    let { body } = req
+    grandTotalEarnings.push(body.log)
+    res.sendStatus(200)
+})
+
+app.post("/clearlog", (req, res) => {
+    log = []
+    let { body } = req
+    log.push(body.log)
+    res.sendStatus(200)
+})
+
 app.listen(port, () => console.log(`Server running on port: ${port}`))

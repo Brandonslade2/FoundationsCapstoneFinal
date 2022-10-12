@@ -1,3 +1,5 @@
+const { default: axios } = require("axios")
+
 //Selectors
 const mondayHours = document.querySelector('#monday-hours-input')
 const tuesdayHours = document.querySelector('#tuesday-hours-input')
@@ -7,12 +9,11 @@ const fridayHours = document.querySelector('#friday-hours-input')
 const saturdayHours = document.querySelector('#saturday-hours-input')
 const sundayHours = document.querySelector('#sunday-hours-input')
 const wageHourly = document.querySelector('#wage-hours-input')
-const calculateTotalsBtn = document.querySelector('#calculate-totals')
 const totalHoursWorkedLabel = document.querySelector('#total-hours-worked')
 const calculateTotalsForm = document.querySelector('.form')
 const totalEarningsLabel = document.querySelector('#total-earnings')
 const logTotals = document.querySelector('#log-totals')
-const loggedWeek = document.querySelector('#logged-week')
+const clearLog = document.querySelector('#clear-log')
 const grandTotalHoursLabel = document.querySelector('#grand-total-hours')
 const grandTotalEarningsLabel = document.querySelector('#grand-total-earnings')
 const updateLogBtn = document.querySelector("#update-log")
@@ -157,8 +158,8 @@ function storeTotalsInLogAlert() {
     alert("You successfully stored your calculated totals in the database. Click on Update Log to update your Grand Totals.")
 }
 
-function testAlert() {
-    alert("You successfully stored your calculated totals in the database. Click on Update Log to update your Grand Totals.")
+function clearedLog() {
+    alert("You cleared the server's log and grand totals! Click on 'Update Log and Grand Totals' to refresh your log.")
 }
 
 //Event Listeners
@@ -180,6 +181,8 @@ wageHourly.addEventListener('change',hourlyWageAmountHandler)
 
 calculateTotalsForm.addEventListener('submit', calculateTotals)
 
+
+//IF I CAN'T FIGURE OUT THE CONSOLE ALERTS ON HEROKU I NEED TO REVERT THE ENDPOINTS HERE BACK TO LOCALHOST:5050
 //Event listeners with GET requests
 updateLogBtn.addEventListener("click", async () => {
     await axios
@@ -189,7 +192,7 @@ updateLogBtn.addEventListener("click", async () => {
 
 updateLogBtn.addEventListener("click", async () => {
     await axios
-        .get(`/log`)
+        .get(`/log`) //mention this
         .then(res => updateLog(res.data))
 })
 
@@ -225,4 +228,22 @@ logTotals.addEventListener('click', async () => {
     totalEarnings = 0
     totalHoursWorkedLabel.innerHTML = ('')
     totalEarningsLabel.innerHTML = ('')
+})
+
+clearLog.addEventListener('click', async () => {
+    grandTotalHoursWorked = 0
+    grandTotalEarnings = 0
+    log = "Log was recently cleared"
+    body = {log: grandTotalHoursWorked}
+    await axios
+        .post('/cleargrandtotalhours', body)
+    body = { log: grandTotalEarnings}
+    await axios
+        .post('/cleargrandtotalearnings', body)
+    body = { log: log}
+    await axios
+        .post('/clearlog', body)
+    totalHoursWorkedLabel.innerHTML = ('')
+    totalEarningsLabel.innerHTML = ('')
+    clearedLog()
 })
