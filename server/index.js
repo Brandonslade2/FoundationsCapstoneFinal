@@ -71,7 +71,6 @@ app.post("/cleargrandtotalearnings", (req, res) => {
 app.post("/clearlog", (req, res) => {
     log = []
     let { body } = req
-    log.push(body.log)
     res.sendStatus(200)
 })
 
